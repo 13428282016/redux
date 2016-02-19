@@ -5,7 +5,7 @@
 
 var gulp = require('gulp');
 
-
+var connect=require('gulp-connect');
 gulp.task('server:assets', function () {
 
 
@@ -23,7 +23,7 @@ gulp.task('server:assets', function () {
             if (err) {
                 console.log(err);
             }
-            console.log('Listening at t.assets.mj.kankan.com:80');
+            console.log('Listening at t.assets.test.com:80');
         })
 
 
@@ -51,6 +51,41 @@ gulp.task('build:js', function () {
     });
 
 });
+
+
+gulp.task('server:web',function(){
+
+
+    //webpack-dev-server和这个server端口一样时liverreload无效
+    connect.server({
+        port:8080,
+        root:'./',
+        host:'dev.com',
+        livereload:true,
+
+
+
+    });
+
+
+
+});
+
+
+gulp.task('watch:html',function(){
+
+    gulp.watch(['./*.html'],function(event){
+          if(event.type==='changed'){
+
+              gulp.src(event.path)
+              .pipe(   connect.reload());
+
+          }
+
+    })
+
+});
+gulp.task('server:web-reload',['server:web','watch:html']);
 
 
 //gulp.task('server:assets',function(){
