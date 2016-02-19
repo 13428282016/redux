@@ -10,12 +10,13 @@ var webpack = require('webpack')
 
 module.exports = {
     context:path.join(__dirname,'build/js'),
-    devtool:'cheap-module-eval-source-map',//可以在浏览器查看未合并的源代码
+    //devtool:'cheap-module-eval-source-map',//可以在浏览器查看未合并的源代码
     entry: {
-        app:['./app']
+        app:['./business01/app']
     },
     output: {
         path: path.join(__dirname, 'build/js/bundles'),
+
     },
     resolve: {
         extensions: ['','.js','.jsx'],

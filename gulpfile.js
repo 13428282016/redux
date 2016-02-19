@@ -9,11 +9,11 @@ var gulp = require('gulp');
 gulp.task('server:assets', function () {
 
 
-    var webpackDevServer=require('webpack-dev-server');
-    var webpackDevConfig=require('./webpack.config.dev.js');
-    var webpack=require('webpack');
+    var webpackDevServer = require('webpack-dev-server');
+    var webpackDevConfig = require('./webpack.config.dev.js');
+    var webpack = require('webpack');
     new webpackDevServer(webpack(webpackDevConfig), {
-        publicPath:webpackDevConfig.output.publicPath,//把wenpack的bundle文件都放在这个路径下，服务器绑定的硬盘目录是隐式绑定的，不需要自己自定，webpackAdminConfig.output.publicPath和服务器监听的域名要一致
+        publicPath: webpackDevConfig.output.publicPath,//把wenpack的bundle文件都放在这个路径下，服务器绑定的硬盘目录是隐式绑定的，不需要自己自定，webpackAdminConfig.output.publicPath和服务器监听的域名要一致
         hot: true,
         quiet: false,
         historyApiFallback: true,
@@ -30,6 +30,27 @@ gulp.task('server:assets', function () {
 });
 
 
+gulp.task('build:js', function () {
+    var webpackProductionConfig = require('./webpack.config.production.js');
+    var webpack = require('webpack');
+    var uglify = require('gulp-uglify'),
+        sourceMaps = require('gulp-sourcemaps'),
+        rename=require('gulp-rename');
+    webpack(webpackProductionConfig, function (err, stat) {
+
+        if (err) {
+            console.log(err);
+            return;
+        }
+        gulp.src(['build/js/bundles/**/*.js'])
+            .pipe(sourceMaps.init())
+            .pipe(uglify())
+            .pipe(rename({extname: '.min.js'}))
+            .pipe(sourceMaps.write('source_maps'))
+            .pipe(gulp.dest('dist/js'));
+    });
+
+});
 
 
 //gulp.task('server:assets',function(){
