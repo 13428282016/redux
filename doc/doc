@@ -1,0 +1,11 @@
+动作类型，动作（动作类型【必须】+动作参数【可选】），reducer（入口为状态，动作 ，输出为新的状态，期间不可以修改原来的状态，不可以有异步操作，不可以有随机操作），store（分发动作，记录完成动作后的新状态，store绑定某个reducer来处理动作，也就是说store可以和任何一个reducer绑定在一起，不同的reducer有不同的处理动作的方式。），
+component（组件，用户和组件产生的交互在程序上等价于store分发一个动作，分发动作后会获得新的状态，组件根据这个新的状态来更新视图），containner（容器，把多个component包装起来，并使用react-redux的connect方法，把react-redux的Provider组件提供的store绑定到本容器，并且在状态改变时自动更新视图）
+
+
+外部使用
+render(
+  <Provider store={store}>
+    <App />//容器
+  </Provider>,
+  rootElement
+)

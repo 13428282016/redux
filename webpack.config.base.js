@@ -25,6 +25,7 @@ module.exports = {
             action:path.join(__dirname, 'build/js/action'),
             store:path.join(__dirname, 'build/js/store'),
             component:path.join(__dirname, 'build/js/component'),
+            container:path.join(__dirname, 'build/js/container'),
         }
 
     },

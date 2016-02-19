@@ -16,3 +16,6 @@ export  function filter(conditions){
     return {type:types.FILTER,conditions};
 }
 
+export function complete(id) {
+    return {type: types.COMPLETE, id};
+}

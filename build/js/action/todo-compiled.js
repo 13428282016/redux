@@ -4,12 +4,19 @@
 
 import * as types from 'constant/action_types';
 
-export function addTodo(text) {
+export function add(text) {
 
-    return { type: types.ADD_TODO, text };
+    return { type: types.ADD, text };
 }
-export function removeTodo(text) {
-    return { type: types.REMOVE_TODO, text };
+export function remove(index) {
+    return { type: types.DELETE, index };
+}
+export function filter(conditions) {
+    return { type: types.FILTER, conditions };
+}
+
+export function complete(id) {
+    return { type: types.COMPLETE, id };
 }
 
 //# sourceMappingURL=todo-compiled.js.map

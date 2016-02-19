@@ -19,6 +19,11 @@ function todos(state = [], action) {
             var copy = state.slice();
             copy.splice(action.index, 1);
             return copy;
+        case types.COMPLETE:
+            var copy=state.slice();
+            copy[action.id].status="COMPLETED";
+            return copy;
+
         default :
             return state;
 

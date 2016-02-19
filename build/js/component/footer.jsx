@@ -7,7 +7,7 @@ export default class Footer extends Component {
 
         return (
             <p>
-                {this.props.conditions}
+                {JSON.stringify(this.props.conditions)}
             </p>
         )
     }

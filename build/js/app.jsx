@@ -3,31 +3,36 @@
  */
 //import {ADD_TODO,REMOVE_TODO} from 'constant/actionTypes
 'use strict'
-import todoStore from 'store/todo';
+import store from 'store/todo';
 import * as actions from 'action/todo';
-import TodoApp from 'component/todo_app.jsx'
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import React from 'react';
 
-todoStore.subscribe(function () {
+import  App from 'container/todo_app'
+import {Provider} from 'react-redux';
 
-    console.log(todoStore.getState());
-});
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.add('first'));
-todoStore.dispatch(actions.remove(1));
-todoStore.dispatch(actions.remove(1));
-todoStore.dispatch(actions.remove(1));
+//todoStore.subscribe(function () {
+//
+//    console.log(todoStore.getState());
+//});
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.add('first'));
+//todoStore.dispatch(actions.remove(1));
+//todoStore.dispatch(actions.remove(1));
+//todoStore.dispatch(actions.remove(1));
+//
+//todoStore.dispatch(actions.filter({visibility: 'SHOW_PROGRESS'}));
 
-todoStore.dispatch(actions.filter({visibility: 'SHOW_PROGRESS'}));
 
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>
 
-ReactDOM.render(
-    <TodoApp />
-    , document.body);
+    , document.getElementById('test'));
