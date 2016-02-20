@@ -47,7 +47,7 @@ gulp.task('build:js', function () {
             .pipe(uglify())
             .pipe(rename({extname: '.min.js'}))
             .pipe(sourceMaps.write('source_maps'))
-            .pipe(gulp.dest('dist/js'));
+            .pipe(gulp.dest('dist/js/bundles'));
     });
 
 });
@@ -59,7 +59,7 @@ gulp.task('server:web',function(){
     //webpack-dev-server和这个server端口一样时liverreload无效
     connect.server({
         port:8080,
-        root:'./',
+        root:'./www',
         host:'dev.com',
         livereload:true,
 
@@ -74,7 +74,7 @@ gulp.task('server:web',function(){
 
 gulp.task('watch:html',function(){
 
-    gulp.watch(['./*.html'],function(event){
+    gulp.watch(['./www/*.html'],function(event){
           if(event.type==='changed'){
 
               gulp.src(event.path)

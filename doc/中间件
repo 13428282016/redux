@@ -1,0 +1,59 @@
+
+
+中间件要素
+
+   入口：上一次参数
+   出口：返回对上一次参数扩展后的参数
+
+
+
+   中间件串联：
+每执行一个中间件 用返回值覆盖上一次的入口参数，并把新的值作为下一个中间件的入口参数，这样不断循环下去，最初的入口参数将会不断的扩展，中间件需要反转顺序，是因为扩展时会进行嵌套包装，最右边的应该在嵌套的最内层保证
+function applyMiddlewareByMonkeypatching(store, middlewares) {
+  middlewares = middlewares.slice()
+  middlewares.reverse()
+
+  // 在每一个 middleware 中变换 dispatch 方法。
+  middlewares.forEach(middleware =>
+    store.dispatch = middleware(store)
+  )
+}
+
+
+
+
+
+
+改进的中间件，在外部直接传递next进去，而不是在中间件内部获取next
+
+但是，还有另一种方式来实现这种链式调用的效果。可以让 middleware 以方法参数的形式接收一个 next() 方法，而不是通过 store 的实例去获取。
+
+function logger(store) {
+  return function wrapDispatchToAddLogging(next) {
+    return function dispatchAndLog(action) {
+      console.log('dispatching', action)
+      let result = next(action)
+      console.log('next state', store.getState())
+      return result
+    }
+  }
+}
+
+
+// 警告：这只是一种“单纯”的实现方式！
+// 这 *并不是* Redux 的 API.
+
+function applyMiddleware(store, middlewares) {
+  middlewares = middlewares.slice()
+  middlewares.reverse()
+
+  let dispatch = store.dispatch
+  middlewares.forEach(middleware =>
+    dispatch = middleware(store)(dispatch)//在外部直接传递next进去，而不是在中间件内部获取next
+  )
+
+  return Object.assign({}, store, { dispatch })
+}
+
+
+

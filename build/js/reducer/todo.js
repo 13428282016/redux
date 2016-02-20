@@ -6,7 +6,7 @@
 
 import  *  as types from 'constant/action_types';
 import  {combineReducers} from 'redux';
-import 'es6-shim';
+import  'babel-polyfill';
 
 
 function todos(state = [], action) {

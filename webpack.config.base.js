@@ -12,7 +12,8 @@ module.exports = {
     context:path.join(__dirname,'build/js'),
     //devtool:'cheap-module-eval-source-map',//可以在浏览器查看未合并的源代码
     entry: {
-        app:['./business01/app']
+        app:['./business01/app'],
+        news:['./business02/news'],
     },
     output: {
         path: path.join(__dirname, 'build/js/bundles'),
@@ -27,6 +28,7 @@ module.exports = {
             store:path.join(__dirname, 'build/js/store'),
             component:path.join(__dirname, 'build/js/component'),
             container:path.join(__dirname, 'build/js/container'),
+            middleware:path.join(__dirname, 'build/js/middleware'),
         }
 
     },

@@ -1,7 +1,7 @@
-import AddTodo from 'component/add_todo.jsx';
-import Footer from 'component/footer.jsx';
-import Todo from 'component/todo.jsx';
-import TodoList from 'component/todo_list.jsx';
+import AddTodo from 'component/todo/add_todo.jsx';
+import Footer from 'component/todo/footer.jsx';
+import Todo from 'component/todo/todo.jsx';
+import TodoList from 'component/todo/todo_list.jsx';
 import React,{Component} from 'react';
 import * as actions from 'action/todo';
 

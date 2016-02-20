@@ -1,0 +1,1 @@
+ 在调用dispatch时对期参数进行处理，例如thunkMiddleware 的作用是注入dispatch 和获取函数返回值，中间件在创建store时注入。当 middleware 链中的最后一个 middleware dispatch action 时，这个 action 必须是一个普通对象
