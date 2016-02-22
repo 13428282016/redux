@@ -12,6 +12,12 @@ export default  class AddTodo extends Component {
                 <button onClick={e => this.handleClick(e)}>
                     Add
                 </button>
+                <button onClick={e => this.handleRedoClick(e)}>
+                    redo
+                </button>
+                <button onClick={e => this.handleUndoClick(e)}>
+                    undo
+                </button>
             </div>
 
         )
@@ -21,6 +27,17 @@ export default  class AddTodo extends Component {
         const text = node.value.trim();
         this.props.onAddClick(text);
         node.value = '';
+    }
+
+    handleRedoClick(){
+
+        this.props.onRedoClick();
+
+
+    }
+    handleUndoClick(){
+        this.props.onUndoClick();
+
     }
 
 }

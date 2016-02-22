@@ -14,4 +14,6 @@ export const RESPONSE="RESPONSE";
 export const FAIL="FAIL";
 export const SUCCESS="SUCCESS";
 export const REFRESH="REFRESH";
+export const UNDO="UNDO";
+export const REDO="REDO";
 

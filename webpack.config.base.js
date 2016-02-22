@@ -29,6 +29,7 @@ module.exports = {
             component:path.join(__dirname, 'build/js/component'),
             container:path.join(__dirname, 'build/js/container'),
             middleware:path.join(__dirname, 'build/js/middleware'),
+            clib:path.join(__dirname, 'build/js/clib'),
         }
 
     },

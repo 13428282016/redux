@@ -8,7 +8,8 @@ import  *  as types from 'constant/action_types';
 import  {combineReducers} from 'redux';
 import  'babel-polyfill';
 
-
+//import  undoable  from 'clib/undo_redo_reducer';
+import  undoable  ,{ distinctState }from 'redux-undo';
 function todos(state = [], action) {
 
 
@@ -58,7 +59,7 @@ function filters(state = initFilters, action) {
 
 const todoApp = combineReducers({
 
-    todos,
+    todos:undoable(todos,{ filters: distinctState() }),
     filters
 });
 
