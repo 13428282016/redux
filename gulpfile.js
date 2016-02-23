@@ -42,12 +42,12 @@ gulp.task('build:js', function () {
             console.log(err);
             return;
         }
-        gulp.src(['build/js/bundles/**/*.js'])
+        gulp.src(['public/assets/build/js/bundles/**/*.js'])
             .pipe(sourceMaps.init())
             .pipe(uglify())
             .pipe(rename({extname: '.min.js'}))
             .pipe(sourceMaps.write('source_maps'))
-            .pipe(gulp.dest('dist/js/bundles'));
+            .pipe(gulp.dest('public/assets/dist/js/bundles'));
     });
 
 });
@@ -59,7 +59,7 @@ gulp.task('server:web',function(){
     //webpack-dev-server和这个server端口一样时liverreload无效
     connect.server({
         port:8080,
-        root:'./www',
+        root:'public',
         host:'dev.com',
         livereload:true,
 
@@ -74,7 +74,7 @@ gulp.task('server:web',function(){
 
 gulp.task('watch:html',function(){
 
-    gulp.watch(['./www/*.html'],function(event){
+    gulp.watch(['public/*.html'],function(event){
           if(event.type==='changed'){
 
               gulp.src(event.path)

@@ -1,7 +1,7 @@
 {
   "name": "redux_learning",
   "version": "1.0.0",
-  "description": "webpack+babel+npm+gulp+react+redux",
+  "description": "webpack+babel+npm+gulp+react+redux+express",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
