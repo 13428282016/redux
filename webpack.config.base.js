@@ -14,6 +14,7 @@ module.exports = {
     entry: {
         app:['./business01/app'],
         news:['./business02/news'],
+        router:['./business03/router'],
     },
     output: {
         path: path.join(__dirname, 'public/assets/build/js/bundles'),
